@@ -1,0 +1,17 @@
+tensorflow
+transformers
+textract
+PyPDF2
+flask
+flask_cors
+firebase_admin
+python-doctr
+python-doctr[tf]
+rapidfuzz==2.15.1
+spacy==2.3.5
+en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.3.1/en_core_web_md-2.3.1.tar.gz
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz
+pyresparser
+nltk
+fpdf
+

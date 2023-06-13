@@ -1,11 +1,5 @@
 from flask import Flask,request, jsonify, abort, send_file
 from flask_cors import CORS
-import json
-
-import firebase_admin
-from firebase_admin import credentials, firestore, storage
-
-from datetime import datetime, timedelta
 from backend import *
 
 # # Connect Firebase
@@ -22,24 +16,6 @@ CORS(app)
 @app.route('/')
 def home():
     return '''<h1>TalentEase Machine Learning API v1</h1>'''
-	
-
-@app.route('/api/extract', methods=['POST'])
-def extract():
-    if not request.json:
-        abort(400)
-    data = request.get_json()
-
-@app.route('/api/summary', methods=['POST'])
-def summary():
-    if not request.json:
-        abort(400)
-    else:
-        data = request.get_json()
-        dbs = db.collection('ml test')
-        doc = dbs.document(data['id'])
-        res = doc.get().to_dict()
-        return jsonify(res),201
 
 @app.route('/api/upload', methods=['POST'])
 def upload():
@@ -47,9 +23,9 @@ def upload():
         abort(400)
     else:
         data = request.get_json()
-        summary_pred(data['cv'],data['id'])
+        summary_pred(data['id'])
         return jsonify({"response":"Hasil prediksi berhasil masuk ke database!"}),201
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
