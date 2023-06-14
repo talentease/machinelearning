@@ -10,9 +10,10 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return '''<h1>TalentEase Machine Learning API v1</h1>'''
+    # return as json
+    return jsonify({'status: 200, message': 'Talentease ML API'})
 
-@app.route('/api/prediction', methods=['POST'])
+@app.route('/api/v1/prediction', methods=['POST'])
 def upload():
     if not request.json:
         abort(400)
