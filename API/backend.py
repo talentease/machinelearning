@@ -1,13 +1,14 @@
 # Import Library
+import nltk
+nltk.download("stopwords")
 import PyPDF2 as pdf
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
 import re
 from pyresparser import ResumeParser
 from fpdf import FPDF
+
 import os
-import nltk
-nltk.download("stopwords")
 
 ## Firebase & google cloud
 import firebase_admin
@@ -16,8 +17,11 @@ from google.cloud import storage
 from google.oauth2 import service_account
 
 
-## Model
+# Model
 from transformers import TFAutoModelForSeq2SeqLM, AutoTokenizer, pipeline
+## Model Load
+model = TFAutoModelForSeq2SeqLM.from_pretrained('walkerrose/cv_summarization-distilbart-cnn-16-6')
+tokenizer = AutoTokenizer.from_pretrained('walkerrose/cv_summarization-distilbart-cnn-16-6')
 
 # Firebase & Google Cloud auth
 cred = firebase_admin.credentials.Certificate("talentease-project-firebase-adminsdk-db1kq-66426f47e0.json")
@@ -32,6 +36,7 @@ def clean_summ(res):
   res = res.replace("_","")  
   res = res.strip().replace('\n', '')
   res = re.sub(' +', ' ', res)
+  res = re.sub(r'\●', ' ', res)
   return res
 
 # Get PDF CV Data
@@ -97,6 +102,8 @@ def text_extractor(id):
     if len(page.extract_text()) > 100: # tweak this number for character count if you want
         # extract text
         text = page.extract_text()
+        if len(text.split(" ")) > 1000:
+            text, skills, experience = extract_with_ocr(file,id)
         text = clean_summ(text)
         data = ResumeParser(file).get_extracted_data()
         os.remove(file)
@@ -108,8 +115,7 @@ def text_extractor(id):
 def summary_pred(id):
     get_pdf(id)
     text, skills, experience = text_extractor(id)
-    model = TFAutoModelForSeq2SeqLM.from_pretrained('walkerrose/cv_summarization-distilbart-cnn-16-6')
-    tokenizer = AutoTokenizer.from_pretrained('walkerrose/cv_summarization-distilbart-cnn-16-6')
+    text = (text[:4600]) if len(text) > 4600 else text
     print("Generate Summary...")
     summarizer = pipeline("summarization", model=model, tokenizer=tokenizer, framework="tf")
     output = summarizer(text,min_length=50,max_length=128)

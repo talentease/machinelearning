@@ -3,12 +3,6 @@ from flask_cors import CORS
 from backend import *
 import os
 
-# # Connect Firebase
-# cred = firebase_admin.credentials.Certificate("talentease-project-firebase-adminsdk-db1kq-66426f47e0.json")
-# firebase_admin.initialize_app(cred)
-# db = firestore.client()  # this connects to our Firestore database
-
-
 
 app = Flask(__name__)
 CORS(app)
