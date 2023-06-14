@@ -1,3 +1,6 @@
+import nltk
+nltk.download("stopwords")
+
 # Import Library
 import nltk
 nltk.download("stopwords")
@@ -9,6 +12,7 @@ import re
 import pandas as pd
 
 import os
+
 
 ## Firebase & google cloud
 import firebase_admin
@@ -32,6 +36,7 @@ credentials = service_account.Credentials.from_service_account_file("talentease-
 # Skills Data
 skills_data = pd.read_csv('skills.csv')
 skills_data['Skill'] = skills_data['Skill'].apply(lambda x: re.sub('\\r\\n', '', x))
+
 
 def clean_summ(res):
   res = res.replace(" | "," ")

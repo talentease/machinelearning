@@ -1,22 +1,30 @@
 # Use the official lightweight Python image.
 # https://hub.docker.com/_/python
+# Use a base image with Python pre-installed
 FROM python:3.9
 
-# Allow statements and log messages to immediately appear in the Knative logs
-ENV PYTHONUNBUFFERED True
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1-mesa-glx \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
+# Set the working directory inside the container
+WORKDIR /app
 
-# Install production dependencies.
-RUN pip install -r requirements.txt
+# Copy the requirements.txt file to the container
+COPY requirements.txt .
+
+# Install production dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Download the English language model for spaCy
 RUN python -m spacy download en_core_web_md
 
-# Run the web service on container startup. Here we use the gunicorn
-# webserver, with one worker process and 8 threads.
-# For environments with multiple CPU cores, increase the number of workers
-# to be equal to the cores available.
-# Timeout is set to 0 to disable the timeouts of the workers to allow Cloud Run to handle instance scaling.
-CMD gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+# Copy the rest of the application code to the container
+COPY . .
+
+# Expose any necessary ports (if applicable)
+# EXPOSE <port_number>
+
+# Define the command to run the application
+CMD [ "python", "main.py" ]

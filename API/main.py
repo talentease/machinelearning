@@ -5,15 +5,15 @@ import os
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='*')
 
 
 @app.route('/')
 def home():
     # return as json
-    return jsonify({'status: 200, message': 'Talentease ML API'})
+    return jsonify({'status': 200,'message': 'Welcome to Talentease API'})
 
-@app.route('/api/v1/prediction', methods=['POST'])
+@app.route('/api/prediction', methods=['POST'])
 def upload():
     if not request.json:
         abort(400)
