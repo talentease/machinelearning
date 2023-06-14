@@ -102,25 +102,19 @@ def text_extractor(id):
     else:
         return extract_with_ocr(file,id)
 
-
-
-
 # Summary model predict
 def summary_pred(id):
     get_pdf(id)
     text, skills, experience = text_extractor(id)
     model = TFAutoModelForSeq2SeqLM.from_pretrained('walkerrose/cv_summarization-distilbart-cnn-16-6')
     tokenizer = AutoTokenizer.from_pretrained('walkerrose/cv_summarization-distilbart-cnn-16-6')
-    pred_token = tokenizer(text, max_length=512, padding="max_length", return_tensors="np").input_ids
     print("Generate Summary...")
     summarizer = pipeline("summarization", model=model, tokenizer=tokenizer, framework="tf")
     output = summarizer(text,min_length=50,max_length=128)
     hasil = {"skills":skills,
             "experience":experience,
             "summary": output[0]['summary_text']}
-    db.collection('ml test').document(id).set(hasil)
+    db.collection('prediction').document(id).set(hasil)
     print("Data berhasil disimpan di database")
-
+    return hasil
     
-
-
