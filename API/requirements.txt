@@ -1,5 +1,4 @@
-tensorflow
-transformers
+transformers[tf-cpu]
 textract
 PyPDF2
 flask
