@@ -6,6 +6,8 @@ import re
 from pyresparser import ResumeParser
 from fpdf import FPDF
 import os
+import nltk
+nltk.download("stopwords")
 
 ## Firebase & google cloud
 import firebase_admin
@@ -35,7 +37,7 @@ def clean_summ(res):
 # Get PDF CV Data
 def get_pdf(id):
     cloud_path = f"CV/{id}.pdf"
-    temp_path = f"temp/{id}.pdf"
+    temp_path = f"{id}.pdf"
     storage_client = storage.Client(credentials=credentials)
     bucket = storage_client.bucket("talentease-project.appspot.com")
     blob = bucket.blob(cloud_path).download_to_filename(temp_path)
@@ -78,15 +80,15 @@ def extract_with_ocr(file,id):
             ln = 1, align = 'J')
     
     # save the pdf with name .pdf
-    pdf.output(f"temp/temp_{id}.pdf")  
-    data = ResumeParser(f"temp/temp_{id}.pdf").get_extracted_data()
+    pdf.output(f"temp_{id}.pdf")  
+    data = ResumeParser(f"temp_{id}.pdf").get_extracted_data()
     text = clean_summ(text)
-    os.remove(f"temp/temp_{id}.pdf")
+    os.remove(f"temp_{id}.pdf")
     return text, data['skills'],data['experience']
 
 def text_extractor(id):
     # read file
-    file = f"temp/{id}.pdf"
+    file = f"{id}.pdf"
     reader = pdf.PdfReader(file)
     page = reader.pages[0]
     
