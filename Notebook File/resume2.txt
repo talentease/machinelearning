@@ -1,0 +1,116 @@
+Tomi Tuhkanen                    CV
+Joupinmäenrinne 3 C 37
+02760 Espoo
+http://www.iki.fi/tomi.tuhkanen
+tomi.tuhkanen@iki.fi            15.8.2011
+
+
+
+PERSONAL INFO
+
+Name                Tomi Erik Tuhkanen
+
+Date of birth       23.07.1981
+Place               Hanko
+
+Military service    KaartJR, Santahamina
+                    7/2001 - 7/2002
+                    Motor NCO
+                    
+Driving license     ABECE
+
+
+WORK EXPERIENCE
+
+Software Architect  Thermo Fisher Scientific
+                    1/2012 --
+
+Consultant          Cybercom Finland
+                    3/2010 - 12/2011
+
+Software Developer  Wincor Nixdrof
+                    8/2009 - 3/2010
+
+Software Engineer   Basware Corp.
+                    2/2007 - 8/2009
+
+Programmer          ABB Sp. z o.o., Poland
+                    7/2006 - 8/2006
+
+Warehouse worker    Assistor Oy Ab
+                    9/1999 - 5/2007
+
+
+EDUCATION
+
+Master of Eng.      Helsinki Metropolia UAS
+                    8/2011 --
+                    School of ICT
+                    Degree Programme in IT
+
+Bachelor of Eng.    Helsinki Polytechnic
+                    8/2002 - 12/2007
+                    Faculty of Technology
+                    Degree Programme in IT
+                    Software Engineering
+                
+Exchange student    Temasek Polytechnic
+                    Singapore
+                    5/2005 - 9/2005
+                    IT School
+                    Mobile & Wireless Computing
+
+High school         Leppävaara High School
+                    6/2001
+
+
+IT SKILLS
+
+Work use            C#, VB.NET
+                    ASP.NET, MVC
+                    JavaScript, jQuery
+                    HTML, CSS
+                    SQL
+                    XML, XSL
+
+                    Visual Studio
+                    SQL Server
+
+Others              Java, QT (C++), Python, PHP
+                    MySQL
+                
+                    Eclipse, QT Creator
+      
+
+COURSES
+
+Advanced C#         2007, FC Sovelto
+Project Skills      2007, TTY
+SQL                 2007, FC Sovelto
+XML                 2007, FC Sovelto
+SQL Server 2005     2007, FC Sovelto
+XML II              2007, FC Sovelto
+Design Patterns     2008, Tieturi
+Analysis and design 2008, Tieturi
+TDD                 2009, Tieturi
+.NET 4.0            2010, NSD
+WPF & MVC 2         2010, NSD
+JQuery              2010, NSD
+EF, CQRS            2011, Cybercom
+CSS                 2011, Cybercom
+
+
+LANGUAGE SKILLS
+
+Finnish             Mother tongue
+English             Fluent
+Swedish             Basic
+German              Basic
+Spanish             Beginner
+
+
+HOBBIES             Climbing
+                    Gym
+                    Cycling
+                    Reading
+                    Computers
