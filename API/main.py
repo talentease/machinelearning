@@ -13,7 +13,7 @@ def home():
     # return as json
     return jsonify({'status': 200,'message': 'Welcome to Talentease API'})
 
-@app.route('/api/prediction', methods=['POST'])
+@app.route('/api/v1/prediction', methods=['POST'])
 def upload():
     if not request.json:
         abort(400)

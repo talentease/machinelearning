@@ -17,9 +17,6 @@ COPY requirements.txt .
 # Install production dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Download the English language model for spaCy
-RUN python -m spacy download en_core_web_md
-
 # Copy the rest of the application code to the container
 COPY . .
 
