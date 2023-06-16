@@ -9,7 +9,7 @@ We build CV Summarization model with Transformers model from Hugging Face and Tr
 
 ## CV Summarization Model Evaluation
 
-| Nodel                     | Rouge-L               |
+| Model                     | Rouge-L               |
 | ------------------------- | ------------------ |
 | distilbart-16-6    | 76.04%    | 
 | T5   | 33.39%    |
